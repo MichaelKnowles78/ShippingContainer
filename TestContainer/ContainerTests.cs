@@ -7,7 +7,7 @@ using NUnit.Framework;
 public class ContainerTests
 {
     [TestCase("ABCU1234", "Argument is too short")]
-    [TestCase("BBUA1234567", "4th character is not a valid Product group (U, J, or Z)")]
+    [TestCase("BBUA1234567", "4th character is not a valid equipment category group (U, J, or Z)")]
     [TestCase("MSCUZ2A4567", "Characters 5-10 must be digits")]
     [TestCase("MSCU1Z34567", "Characters 5-10 must be digits")]
     [TestCase("MSCU12Z4567", "Characters 5-10 must be digits")]
