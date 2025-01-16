@@ -43,10 +43,9 @@ public class ContainerNumber
     };
 
     private string _owner;
-    private string _product;
-    private string _registration;
-    private readonly byte _checkDigit;
-    private readonly string _number;
+    private string categoryIdentifier;
+    private string _serialNumber;
+    private byte _checkDigit;
 
     public override string ToString()
     {
