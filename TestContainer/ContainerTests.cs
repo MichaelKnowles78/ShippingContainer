@@ -17,17 +17,18 @@ public class ContainerTests
     [TestCase("MSCU1234568", "Check digit is not correct")]
     public void ContainerNumber_WhenGivenInvalidContainerNumber_ThrowsArgumentException(string containerNumber, string expectedMessage)
     {
-        Assert.Throws<ArgumentException>(() => new ContainerNumber(containerNumber),
+        var ex = Assert.Throws<ArgumentException>(() => new ContainerNumber(containerNumber),
             $"Expected an {nameof(ArgumentException)} with the message '{expectedMessage}' to be thrown.");
+        Assert.That(ex.Message, Is.EqualTo(expectedMessage));
     }
 
-    [TestCase("MSCU1234566", ExpectedResult = true)]
-    [TestCase("HDMJ9876540", ExpectedResult = true)]
-    [TestCase("CAXZ5432160", ExpectedResult = true)]
-    public bool ContainerNumber_WhenGivenValidContainerNumber_ReturnsExpectedResult(string containerNumber)
+    [TestCase("MSCU1234566")]
+    [TestCase("HDMJ9876540")]
+    [TestCase("CAXZ5432160")]
+    public void ContainerNumber_WhenGivenValidContainerNumber_ReturnsExpectedResult(string containerNumber)
     {
         var result = new ContainerNumber(containerNumber);
 
-        return result.ToString() == containerNumber.ToUpper();
+        Assert.That(result.ToString(), Is.EqualTo(containerNumber.ToUpper()));
     }
 }
